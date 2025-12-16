@@ -1,22 +1,92 @@
-# UTS Praktikum UDB
-NIM: 240104010
+# UTS Docker – Database & Adminer
 
-## Deskripsi
-Project ini merupakan UTS praktikum yang mengintegrasikan Git, Docker, MySQL,
-PostgreSQL, Adminer, dan ZeroTier dengan fokus pada isolasi network Docker
-dan kontrol akses database menggunakan ZeroTier.
+## Identitas Mahasiswa
 
-## Konfigurasi Network
-- Custom bridge network: 172.30.10.0/24
-- Static IP untuk setiap container
-- Database tidak diekspos ke publik
-- Adminer diakses melalui ZeroTier
+* **Nama** : Roikhan Nur Fauzi
+* **NIM** : 240104010
 
-## Service
-- MySQL (uts_mysql) → 172.30.10.10
-- PostgreSQL (uts_postgres) → 172.30.10.20
-- Adminer (uts_adminer) → Port 8010
+---
 
-## Kesimpulan
-Dengan penggunaan Docker network dan ZeroTier, akses database dapat
-dikontrol secara aman dan terisolasi.
+## Administrator Port
+
+* **Adminer** : `8010`
+* **MySQL** : `3306`
+* **PostgreSQL** : `5432`
+
+---
+
+## IP ZeroTier
+
+* **IP ZeroTier** : 10.147.19.80
+
+---
+
+## Cara Menjalankan Project
+
+1. Clone repository:
+
+   ```
+   git clone https://github.com/roi969969/240104010-udb-uts
+   ```
+2. Masuk ke folder project:
+
+   ```
+   cd 240104010-udb-uts
+   ```
+3. Jalankan Docker Compose:
+
+   ```
+   docker compose up -d
+   ```
+4. Pastikan container berjalan:
+
+   ```
+   docker ps
+   ```
+
+---
+
+## Akses Adminer
+
+Buka browser:
+
+```
+http://IP_ZEROTIER:8080
+```
+
+### Login Adminer ke MySQL
+
+* **System** : MySQL
+* **Server** : mysql
+* **Username** : root
+* **Password** : root
+* **Database** : (kosongkan / isi sesuai kebutuhan)
+
+### Login Adminer ke PostgreSQL
+
+* **System** : PostgreSQL
+* **Server** : uts_postgres
+* **Username** : postgres
+* **Password** : postgres
+* **Database** : postgres
+
+---
+
+## Tangkapan Layar (Wajib)
+
+Lampirkan screenshot berikut:
+
+1. Output `docker ps`
+2. Adminer diakses melalui IP ZeroTier
+3. Login Adminer ke MySQL (berhasil)
+4. Login Adminer ke PostgreSQL (berhasil)
+
+## ScreenShot
+![docker ps](screenshots/docker-ps.png)
+
+![login adminer](screenshots/adminer.png)
+
+![login mysql dari adminer](screenshots/login-mysql.png)
+
+![MySQL via ZeroTier](screenshots/login-postgres.png)
+
